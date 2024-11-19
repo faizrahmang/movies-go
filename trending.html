@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Movies</title>
+    <link rel="stylesheet" href="trending.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div><a href="main.html" target="_self">All Movies</a></div>
+        <div><a href="category.html" target ="">Category</a></div>
+        <div><a href ="trending.html" target="_self">Trending</a></div>
+        <div> <button id = "loginButton"><a href="/loginPage/log.html"> LOGIN</a> </button></div>
+        <div class="pagination" id="pagination">
+            <button id="prevBtn" class="disabled" disabled>&laquo; Previous</button>
+            <span id="currentPageIndicator"></span>
+            <button id="nextBtn">Next &raquo;</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="movies-container" class="card-container"></div>
+        
+    </div>
+    
+
+    <script>
+        let currentPage = 1;
+        let totalPages = 100; // Limit total pages to 100
+        const apiKey = '61379c6beb23a7932964967f5800dc96'; // Replace with your TMDB API key
+
+        function fetchMovies(page) {
+            fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const movies = data.results;
+                    const moviesContainer = document.getElementById('movies-container');
+                    moviesContainer.innerHTML = '';
+
+                    movies.forEach(movie => {
+                        const card = document.createElement('div');
+                        card.classList.add('card');
+
+                        const imageUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+
+                        card.innerHTML = `
+                            <img src="${imageUrl}" alt="${movie.title} Poster">
+                            <div class="card-content">
+                                <h3>${movie.title}</h3>
+                                <p><strong>Release Year:</strong> ${movie.release_date ? movie.release_date.slice(0, 4) : 'Unknown'}</p>
+                            </div>
+                        `;
+
+                        moviesContainer.appendChild(card);
+                    });
+
+                    updatePagination(page);
+                })
+                .catch(error => {
+                    console.error('Error fetching movies:', error);
+                });
+        }
+
+        function updatePagination(currentPage) {
+            const currentPageIndicator = document.getElementById('currentPageIndicator');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // Update current page indicator
+            currentPageIndicator.textContent = `Page ${currentPage}`;
+
+            // Enable or disable previous button based on current page
+            if (currentPage > 1) {
+                prevBtn.classList.remove('disabled');
+                prevBtn.disabled = false;
+                prevBtn.addEventListener('click', () => {
+                    currentPage--;
+                    fetchMovies(currentPage);
+                });
+            } else {
+                prevBtn.classList.add('disabled');
+                prevBtn.disabled = true;
+                prevBtn.removeEventListener('click', () => {});
+            }
+
+            // Enable or disable next button based on current page
+            if (currentPage < totalPages) {
+                nextBtn.classList.remove('disabled');
+                nextBtn.disabled = false;
+                nextBtn.addEventListener('click', () => {
+                    currentPage++;
+                    fetchMovies(currentPage);
+                });
+            } else {
+                nextBtn.classList.add('disabled');
+                nextBtn.disabled = true;
+                nextBtn.removeEventListener('click', () => {});
+            }
+        }
+
+        // Initial fetch
+        fetchMovies(currentPage);
+    </script>
+</body>
+</html>

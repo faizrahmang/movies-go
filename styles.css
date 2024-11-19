@@ -1,0 +1,547 @@
+.body{
+    /* display: flex; */
+    background: url("backGround.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    /* z-index :-10; */
+
+    
+}
+.y{
+    display:grid;
+    background-color: aqua;
+    padding: 2px 60px 2px 60px;
+    width:50px;
+    height:3px;
+    align-items: center;
+    
+}
+*{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+header{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color:rgb(20, 78, 172);
+    height:60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: 1;
+    z-index: 100;
+  }
+    
+
+
+header>div>a{
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+/* cbody{
+    background-color: grey;
+    width:200px;
+    display:block;
+    height:80vh;
+} */
+
+.bg{
+    background-image: url(bluepic.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logc {
+    background-color: rgba(153, 214, 214, 0.3);
+    height: 55%;
+    width:fit-content; 
+    display: flex;
+    flex-direction: column;
+    padding: 25px 40px;
+    border-radius: 15px;
+    justify-content: center;
+    backdrop-filter: blur(2.5px) saturate(180%);
+    font-size: large;
+    gap: 10px;
+    
+}
+.logc > input{
+    padding: 10px 10px 10px 10px;
+    font-size: medium;
+    border-radius: 5px;
+    border-color: rgb(255, 255, 255);
+    
+}
+
+
+h1{
+    padding: 0px;
+    margin:0%;
+    color:rgba(255, 255, 255, 0.951);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+.u{
+    width:50%;
+     border-radius: 15px; 
+     background-color: rgba(153, 214, 214, 0.3);
+    backdrop-filter: blur(2.5px) saturate(180%);
+    border:solid black 1px;
+    align-self: center;
+    margin-top: 15px;
+    color: rgba(20, 78, 172, 0.951);
+    font-weight:400px;
+}
+
+.logc1 {
+    background-color: rgba(153, 214, 214, 0.3);
+    height: 60%;
+    width:fit-content; 
+    display: flex;
+    flex-direction: column;
+    padding: 25px 40px;
+    border-radius: 15px;
+    justify-content: center;
+    backdrop-filter: blur(2.5px) saturate(180%);
+    font-size: large;
+    gap: 10px;
+    
+}
+
+.logc1 > input{
+    padding: 10px 10px 10px 10px;
+    font-size: medium;
+    border-radius: 5px;
+    border-color: rgb(255, 255, 255);
+
+}
+
+#loginButton{
+    padding:5px 10px 5px 10px;
+    background-color: rgb(7, 162, 7);
+    color: white;
+    border-color: aliceblue;
+    border-width: 1;
+    border-radius: 5%;
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+#loginButton:hover{
+    cursor: pointer;
+}
+
+
+/* #movieName{
+    justify-content: center;
+    padding: 10px;
+    margin-top: 12vh;
+} */
+
+.moviess{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* margin-top: 80px;
+    margin-bottom: 10%; */
+    /* position: fixed; */
+    justify-content: center;
+    width: 100%;
+    margin-top: 250px;
+    vertical-align: top;
+}
+
+
+
+#emailp{
+    color:rgb(155, 24, 24);
+    text-shadow: 1px 1px 1px;
+}
+#submit:hover{
+    cursor: pointer;
+}
+
+#search{
+    padding: 10px;
+    width: 100px;
+    height: 50px;
+    font-size: larger;
+    /* margin-top: 11vh; */
+    margin-left: 15px;
+    background-color: green;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    
+}
+
+#search:hover{
+    cursor: pointer;
+}
+
+#search:active{
+    transition : backgound-color 0.5s , color0.5s;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 23%;
+    text-align: center;
+    margin-left: 10px;
+}
+.card img {
+    width: 100%;
+    height: 450px;
+    object-fit: contain;
+    object-position: center;
+}
+.card-content {
+    padding: 16px; 
+}
+.card-title {
+    font-size: 24px;
+    margin: 0;
+}
+.card-date {
+    color: #888;
+    margin: 8px 0;
+}
+.card-cast {
+    font-size: 16px;
+    color: #555;
+}
+
+.card-content {
+    padding: 16px; 
+  
+}
+.card-title {
+    font-size: 24px;
+    margin: 0;
+}
+.card-date {
+    color: #888;
+    margin: 8px 0;
+}
+.card-cast, .card-director, .card-language, .card-imdb, .card-genre {
+    font-size: 16px;
+    color: #555;
+}
+.card-list {
+    list-style-type: none;
+    padding: 0;
+}
+.card-list li {
+    margin: 4px 0;
+}
+#overall{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin:10px;
+    justify-content: center;
+    align-content: center;
+    /* margin-top:18vh; */
+}
+
+#movie-details-card{
+    width:74%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-details,th,td{
+    border:3px solid ;
+    padding: 5px;
+    height: 50px;
+    width:50%;
+    font-size: 25px;
+    border-radius: 15px;
+    background-color: rgba(92, 151, 247, 0.951);
+    backdrop-filter: blur(2.5px) saturate(180%);
+    
+}
+
+
+
+td,th{
+    background-color: rgb(122, 210, 239);
+    
+}
+ul{
+    list-style-type: none;
+}
+.movie-details{
+    width: 80%;
+    height: auto;
+
+}
+
+#movieName{
+    width: 400px;
+    height: 45px;
+    font-size: 30px;
+    border-radius: 30px;
+    border: 1px;
+    border-color: red;
+    padding: 8px;
+    padding-left: 30px;
+    transition: 0.8s;
+}
+
+#movieName:focus{
+    width: 800px;
+    transition: 0.8s;
+    
+}
+
+.afterClick{
+    justify-content: center;
+    width: 100%;
+    margin-top: 80px;
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+    transition: 0.6s;
+
+}
+
+.changebg{
+    background: none;
+    background-color: rgba(12, 34, 70, 0.782);
+    width: 100%;
+    height: 100vh;
+    /* z-index :-10; */
+    
+}
+
+#error{
+    color: red;
+    font-size: 40px;
+    background-color: aliceblue;
+    max-width: 820px;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    
+}
+.body {
+    /* ... other properties */
+    background-color: #121212; /* Dark background */
+    color: #fff; /* White text color */
+  }
+  
+  header {
+    background-color: #222; /* Darker header */
+  }
+  
+  header > div > a {
+    color: #fff;
+  }
+  
+  .bg {
+    /* ... other properties */
+    background-color: #181818; /* Darker background */
+  }
+  
+  .logc, .logc1 {
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent dark background */
+    color: #fff;
+  }
+  
+  .logc > input, .logc1 > input {
+    background-color: #222;
+    color: #fff;
+    border-color: #555;
+  }
+  
+  h1 {
+    color: #fff;
+  }
+  
+  .u {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-color: #555;
+  }
+  
+  #loginButton {
+    background-color: #04162a; /* Blue button */
+    color: #fff;
+    border-color: #0056b3;
+  }
+  
+  .card {
+    background-color: #222;
+    color: #fff;
+  }
+  
+  .card-content {
+    color: #ccc;
+  }
+  
+  .card-title {
+    color: #fff;
+  }
+  
+  .card-date, .card-cast, .card-director, .card-language, .card-imdb, .card-genre {
+    color: #ccc;
+  }
+  
+  .movie-details, th, td {
+    background-color: #222;
+    color: #fff;
+    border-color: #555;
+  }
+  
+  td, th {
+    background-color: #333;
+  }
+  
+  #movieName {
+    background-color: #222;
+    color: #fff;
+    border-color: #555;
+  }
+  
+  /* Animations */
+  
+  .logc, .logc1 {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .logc:hover, .logc1:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  #loginButton:hover {
+    background-color: #0062cc;
+  }
+  
+  #movieName:focus {
+    box-shadow: 0 0 5px #007bff;
+  }
+  
+  .afterClick {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .body {
+    /* ... other properties */
+    background-color: #181818; /* Dark background */
+    color: #fff; /* White text color */
+  }
+  
+  header {
+    background-color: #222; /* Darker header */
+    color: #fff;
+  }
+  
+  header > div > a {
+    color: #fff;
+  }
+  
+  .bg {
+    /* ... other properties */
+    background-color: #181818; /* Darker background */
+  }
+  
+  .logc, .logc1 {
+    background-color: rgba(0, 0, 0, 0.8); /* Transparent dark background */
+    color: #fff;
+    border: 1px solid #555; /* Subtle border */
+  }
+  
+  .logc > input, .logc1 > input {
+    background-color: #222;
+    color: #fff;
+    border-color: #555;
+    border-radius: 5px;
+  }
+  
+  h1 {
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .u {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-color: #555;
+    border-radius: 5px;
+  }
+  
+  #loginButton {
+    background-color: #007bff; /* Blue button */
+    color: #fff;
+    border-color: #0056b3;
+    border-radius: 5px;
+  }
+  
+  .card {
+    background-color: #222;
+    color: #fff;
+    /* border: 1px solid #555; */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card-content {
+    color: #ccc;
+  }
+  
+  .card-title {
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .card-date, .card-cast, .card-director, .card-language, .card-imdb, .card-genre {
+    color: #ccc;
+  }
+  
+  .movie-details, th, td {
+    background-color: #222;
+    color: #fff;
+    border-color: #555;
+    border-radius: 5px;
+  }
+  
+  td, th {
+    background-color: #333;
+    border-color: #555;
+  }
+  
+  #movieName {
+    background-color: #222;
+    color: #fff;
+    border-color: #555;
+    border-radius: 5px;
+  }
+  
+  /* ... other styles */y
+  /* ... other styles */
+  .recent-search {
+    display: none;
+}
+    

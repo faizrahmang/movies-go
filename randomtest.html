@@ -1,0 +1,170 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="trending.css">   
+  <title>Popular Movies</title>
+  <!-- <style>
+    .card {
+      display: flex;
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .card img {
+      max-width: 150px;
+      border-radius: 8px;
+      margin-right: 16px;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .pagination button {
+      margin: 0 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .pagination button:hover {
+      background-color: #0056b3;
+    }
+    .pagination button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    .pagination span {
+      margin: 0 10px;
+      font-size: 1.2em;
+    }
+  </style> -->
+<!-- </head>
+<body>
+  <h1>Popular Movies</h1>  -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type= "text/javascript" src="trending.js"></script>
+    <link rel = "stylesheet" href="trending.css">
+</head>
+<body>
+    <header>
+        <div><a href="main.html" target="_self">All Movies</a></div>
+        <div><a href="category.html" target ="">Category</a></div>
+        <div><a href ="trending.html" target="">Trending</a></div>
+        <div class="pagination">
+            <button id="prevBtn" disabled><<</button>
+            <span id="pageNumber" style="color: white  ;">1</span>
+            <button id="nextBtn">>></button></div>
+        <div> <button id = "loginButton"><a href="signup.html"> LOGIN</a> </button></div>
+       
+    </header>
+    <div id="movies"></div>
+
+  
+
+ <script>
+    const API_KEY ='61379c6beb23a7932964967f5800dc96';
+    const BASE_URL = 'https://api.themoviedb.org/3';
+    const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+    let currentPage = 1;
+
+    document.getElementById('prevBtn').addEventListener('click', () => changePage(-1));
+    document.getElementById('nextBtn').addEventListener('click', () => changePage(1));
+
+    function fetchMovies(page = 1) {
+      const url = `${BASE_URL}/movie/popular?language=en-US&page=${page}`;
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: ` ${API_KEY}`
+        }
+      };
+
+      fetch(url, options)
+        .then(res => res.json())
+        .then(json => {
+          displayMovies(json.results);
+          togglePaginationButtons(json.page, json.total_pages);
+          document.getElementById('pageNumber').textContent = json.page;
+        })
+        .catch(err => console.error('error fetching movies:', err));
+    }
+
+    function fetchMovieDetails(movieId) {
+      const url = `${BASE_URL}/movie/${movieId}?append_to_response=credits`;
+      const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${API_KEY}`
+        }   
+      };
+
+      return fetch(url, options)
+        .then(res => res.json())
+        .catch(err => console.error('error fetching movie details:', err));
+    }
+
+    function displayMovies(movies) {
+      const moviesDiv = document.getElementById('movies');
+      moviesDiv.innerHTML = '';
+
+      movies.forEach(movie => {
+        fetchMovieDetails(movie.id).then(details => {
+          const directors = details.credits.crew.filter(member => member.job === 'Director').map(director => director.name).join(', ');
+          const actors = details.credits.cast.slice(0, 3).map(actor => actor.name).join(', ');
+
+          const movieElement = document.createElement('div');
+          movieElement.className = 'card';
+          const posterUrl = `${IMAGE_BASE_URL}${movie.poster_path}`;
+          movieElement.innerHTML = `
+            <img src="${posterUrl}" alt="${movie.title} Poster">
+            <div>
+              <h2>${movie.title}</h2>
+              <p><strong>Director:</strong> ${directors}</p>
+              <p><strong>Actors:</strong> ${actors}</p>
+            </div>
+          `;
+
+          movieElement.addEventListener('click', () => {
+            alert(`Full details for ${movie.title}:\n\nOverview: ${movie.overview}\nRelease Date: ${movie.release_date}\nVote Average: ${movie.vote_average}`);
+          });
+
+          moviesDiv.appendChild(movieElement);
+        });
+      });
+    } 
+
+    function togglePaginationButtons(current, total) {
+      document.getElementById('prevBtn').disabled = current <= 1;
+      document.getElementById('nextBtn').disabled = current >= total;
+    }
+
+    function changePage(direction) {
+      currentPage += direction;
+      fetchMovies(currentPage);
+    }
+
+    fetchMovies(currentPage);
+  </script>
+</body>
+</html>

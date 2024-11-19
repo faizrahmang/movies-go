@@ -1,0 +1,191 @@
+/* General Reset and Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body Styling with Dynamic Background Animation */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0d0d0f, #232528, #2f3437);
+    background-size: 200% 200%;
+    animation: gradientAnimation 15s ease infinite;
+    color: #f5f5f5;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Particle Animation */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 2px, transparent 2px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 60px 60px, 120px 120px;
+    animation: particleAnimation 20s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes particleAnimation {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 1000px 1000px, 500px 500px; }
+}
+
+/* Forgot Password Page Layout */
+.auth-container {
+    width: 80%;
+    max-width: 900px;
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: fadeInContainer 1s ease forwards;
+}
+
+@keyframes fadeInContainer {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Left side banner (informational) */
+.auth-banner {
+    flex: 1;
+    background: linear-gradient(to top right, #007BFF, #8f48db);
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.auth-banner h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    animation: fadeInText 1.5s ease forwards;
+}
+
+.auth-banner p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    animation: fadeInText 2s ease forwards;
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Right side form */
+.auth-form {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-form h3 {
+    color: #f5f5f5;
+    margin-bottom: 20px;
+    font-size: 26px;
+    text-align: center;
+    animation: fadeInText 1.5s ease forwards;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    color: #ddd;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #DFEBF6;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    animation: slideUpButton 2s ease forwards;
+}
+
+@keyframes slideUpButton {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.btn:hover {
+    background-color: #c1d4ea;
+    transform: scale(1.05);
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+    color: #ccc;
+}
+
+p a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .auth-container {
+        flex-direction: column;
+    }
+
+    .auth-banner {
+        padding: 20px;
+    }
+
+    .auth-form {
+        padding: 20px;
+    }
+}
