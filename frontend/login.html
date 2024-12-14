@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Movie Finder</title>
+    <link rel="stylesheet" href="log.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <h2>Login</h2>
+            <form onsubmit="event.preventDefault(); loginHandler();">
+                <div class="input-group">
+                    <label for="UserId">Email</label>
+                    <input type="email" id="UserId" placeholder="Enter your email" required>
+                    <span id="emailp" aria-live="polite" class="error-message"></span>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="button" class="btn" id="finalLogin" onclick="loginHandler()">Login</button>
+                <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+            </form>
+        </div>
+        <div class="auth-banner">
+            <h3>Welcome Back to Movie Finder!</h3>
+            <p>Discover the latest movies and create your personalized watchlist.</p>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
